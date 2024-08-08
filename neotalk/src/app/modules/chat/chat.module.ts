@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatComponent } from './pages/chat/chat.component';
-import { LanguagesHeaderComponent } from './components/languages-header/languages-header.component';
-import {MatFormField, MatInput, MatPrefix} from "@angular/material/input";
-import { ChatInputComponent } from './components/chat-input/chat-input.component';
+import {MatFormField, MatInput, MatLabel, MatPrefix, MatSuffix} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatIconButton} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
-    ChatComponent,
-    LanguagesHeaderComponent,
-    ChatInputComponent
+    ChatComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +21,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatFormField,
     MatPrefix,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    MatLabel,
+    MatIconButton,
+    MatSuffix
   ]
 })
 export class ChatModule { }

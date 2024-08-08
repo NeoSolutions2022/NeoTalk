@@ -3,8 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrl: './chat.component.scss'
+  templateUrl: 'chat.component.html',
+  styleUrl: 'chat.component.scss'
 })
 export class ChatComponent implements OnInit {
   chatForm: any;

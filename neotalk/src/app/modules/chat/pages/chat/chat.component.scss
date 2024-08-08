@@ -1,131 +1,87 @@
-::ng-deep .chat-container {
-  height: 100%;
-  width: 100%;
+.chat-container{
+  height: 100vh;
+  background-color: green;
   display: flex;
   flex-direction: column;
 
-  .chat-header {
-    height: 10%;
+  .chat__header{
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #123DB5;
     color: white;
-    padding: 0 1rem;
 
     span {
       font-weight: bolder;
     }
   }
 
-  .chat-video-container {
-    background: whitesmoke;
-    height: 90%;
+  .chat__content{
+    position: relative;
+    background-color:red;
+    height: 100%;
     width: 100%;
-    .video {
+
+    &__video {
+      background-color: pink;
       height: 100%;
+    }
+
+    &__text {
       width: 100%;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  .chat-text-container {
-    width: 100%;
-    height: 10%;
-    position: absolute;
-    bottom: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-
-    .chat-message {
-      width: 70%;
-      height: 100%;
-      border-radius: 50px;
-      background-color: #2F4581;
+      padding: 20px;
+      position: absolute;
+      bottom: 3%;
+      gap: 9px;
       display: flex;
       align-items: center;
-      color: white;
-
-      mat-icon {
-        padding-left: 1rem;
-      }
-
-      input {
-        background: none;
-        border: none;
-        height: 90%;
-        width: 70%;
-        color: white;
-        margin-left: .5rem;
-
-        &:focus {
-          outline: none;
-        }
-
-        &::placeholder {
-          color: rgba(255, 255, 255, 0.7);
-        }
-      }
-    }
-
-    .mic {
-      width: 10%;
-      height: 90%;
-      background: white;
-      color: blue;
-      display: flex;
       justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-    }
-  }
-}
 
-@media (min-width: 760px) {
-  ::ng-deep ::ng-deep .chat-container {
-    .chat-header {
-      span {}
-    }
-    .chat-video-container {
-      .video {
-        img {}
-      }
-    }
-    .chat-text-container {
-      .chat-message {
-        mat-icon {}
-        input {
-          width: 80%;
+      &__input{
+        border: 3px solid red;
+        width: 100%;
+        background-color: rgba(41, 65, 128, 0.91);
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        border-radius: 40px;
+
+        input{
+          outline: none;
+          border: none;
+          background: none;
+          color: white;
+
+          &:focus{
+            outline: none;
+          }
+
+          &::placeholder{
+            color: rgba(255, 255, 255, 0.82);
+          }
+
         }
+
+        &__btn-send{
+          margin-left: auto;
+        }
+
       }
-      .mic {}
+
+      &__mic {
+        background: white;
+        padding: 4px;
+        border-radius: 100%;
+
+        mat-icon {
+          color: #123DB5;
+        }
+
+      }
+
     }
+
   }
+
 }
-
-//@media (min-width: 760px) {
-//  ::ng-deep ::ng-deep .chat-container {
-//    .chat-header {
-//      span {}
-//    }
-//    .chat-video-container {
-//      .video {
-//        img {}
-//      }
-//    }
-//    .chat-text-container {
-//      .chat-message {
-//        mat-icon {}
-//        input {}
-//      }
-//      .mic {}
-//    }
-//  }
-//}
-
-
