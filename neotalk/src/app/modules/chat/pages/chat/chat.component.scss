@@ -1,26 +1,131 @@
-.chat-container {
-  width: 100%;
+::ng-deep .chat-container {
   height: 100%;
+  width: 100%;
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  flex-direction: column;
 
-  .chat-text {
-    width: 50%;
-    height: 80%;
-    margin: 1rem;
-    border: black .5px solid;
+  .chat-header {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #123DB5;
+    color: white;
+    padding: 0 1rem;
+
+    span {
+      font-weight: bolder;
+    }
   }
 
-  .chat-video {
-    width: 50%;
-    height: 80%;
-    margin: 1rem;
-    border: black .5px solid;
-
-    img {
-      width: 100%;
+  .chat-video-container {
+    background: whitesmoke;
+    height: 90%;
+    width: 100%;
+    .video {
       height: 100%;
+      width: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .chat-text-container {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+
+    .chat-message {
+      width: 70%;
+      height: 100%;
+      border-radius: 50px;
+      background-color: #2F4581;
+      display: flex;
+      align-items: center;
+      color: white;
+
+      mat-icon {
+        padding-left: 1rem;
+      }
+
+      input {
+        background: none;
+        border: none;
+        height: 90%;
+        width: 70%;
+        color: white;
+        margin-left: .5rem;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+
+    .mic {
+      width: 10%;
+      height: 90%;
+      background: white;
+      color: blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
     }
   }
 }
+
+@media (min-width: 760px) {
+  ::ng-deep ::ng-deep .chat-container {
+    .chat-header {
+      span {}
+    }
+    .chat-video-container {
+      .video {
+        img {}
+      }
+    }
+    .chat-text-container {
+      .chat-message {
+        mat-icon {}
+        input {
+          width: 80%;
+        }
+      }
+      .mic {}
+    }
+  }
+}
+
+//@media (min-width: 760px) {
+//  ::ng-deep ::ng-deep .chat-container {
+//    .chat-header {
+//      span {}
+//    }
+//    .chat-video-container {
+//      .video {
+//        img {}
+//      }
+//    }
+//    .chat-text-container {
+//      .chat-message {
+//        mat-icon {}
+//        input {}
+//      }
+//      .mic {}
+//    }
+//  }
+//}
+
+

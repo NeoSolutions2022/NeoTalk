@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatComponent } from './pages/chat/chat.component';
 import { LanguagesHeaderComponent } from './components/languages-header/languages-header.component';
-import {MatInput} from "@angular/material/input";
+import {MatFormField, MatInput, MatPrefix} from "@angular/material/input";
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
+import {MatIcon} from "@angular/material/icon";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,7 +19,12 @@ import { ChatInputComponent } from './components/chat-input/chat-input.component
   imports: [
     CommonModule,
     ChatRoutingModule,
-    MatInput
+    MatInput,
+    MatIcon,
+    MatFormField,
+    MatPrefix,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ChatModule { }
