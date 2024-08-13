@@ -8,25 +8,24 @@
   <div class="chat__content">
 
     <div class="chat__content__video">
-      <img ngSrc="https://media1.tenor.com/m/ANAuC61sW6UAAAAd/gato-abriendo-y-cerrando-la-boca.gif" fill alt="rapaz">
+      <pose-viewer src="" id="example" loop="true"></pose-viewer>
     </div>
 
     <div class="chat__content__text">
       <div class="chat__content__text__input">
-        <button matTextPrefix mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <button matTextPrefix mat-icon-button>
           <mat-icon>more_vert</mat-icon>
         </button>
-        <input type="text" placeholder="Digite para traduzir">
-        <button class="chat__content__text__input__btn-send" matTextSuffix mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <input [(ngModel)]="message" type="text" placeholder="Digite para traduzir">
+        <button (click)="translateText()" class="chat__content__text__input__btn-send" matTextSuffix mat-icon-button>
           <mat-icon>send</mat-icon>
         </button>
       </div>
       <div class="chat__content__text__mic">
-        <button matTextPrefix mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <button matTextPrefix mat-icon-button>
           <mat-icon>mic</mat-icon>
         </button>
       </div>
     </div>
-
   </div>
 </div>

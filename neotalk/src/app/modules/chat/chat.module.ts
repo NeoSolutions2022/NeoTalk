@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { ChatRoutingModule } from './chat-routing.module';
@@ -26,6 +26,7 @@ import {MatIconButton} from "@angular/material/button";
     MatLabel,
     MatIconButton,
     MatSuffix
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ChatModule { }
