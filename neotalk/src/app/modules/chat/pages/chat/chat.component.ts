@@ -1,7 +1,4 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
-import * as PoseViewer from 'pose-viewer'
 import {PoseService} from "../../../../services/pose.service";
 
 @Component({
@@ -11,11 +8,7 @@ import {PoseService} from "../../../../services/pose.service";
 })
 export class ChatComponent implements OnInit {
   poseData: any;
-
-  chatForm: any;
-  poseArrayBuffer: any;
-  message: string = '';
-  poseUrl: any = null;
+  message: string = 'Olá, tudo bem?';
   poseViewer: any;
   recognition: any;
   transcript: string = '';
@@ -23,8 +16,6 @@ export class ChatComponent implements OnInit {
   isListening: boolean = false;
 
   constructor(
-    private httpClient: HttpClient,
-    private sanitizer: DomSanitizer,
     private ngZone: NgZone,
     private poseService: PoseService
   ) {
@@ -37,13 +28,18 @@ export class ChatComponent implements OnInit {
 
     this.recognition = new SpeechRecognition();
     this.recognition.continuous = true;
-    this.recognition.interimResults = false;
+    this.recognition.interimResults = true;
+    this.recognition.lang = 'pt-BR';
 
     this.recognition.onresult = (event: any) => {
+      console.log('Reconhecimento de voz:', event);
       this.ngZone.run(() => {
-        const result = event.results[event.resultIndex];
-        this.transcript = result[0].transcript;
-        this.message += this.transcript;
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          setTimeout(() => {
+          }, 1000);
+
+          this.message = event.results[i][0].transcript;
+        }
       });
     };
 
@@ -68,6 +64,7 @@ export class ChatComponent implements OnInit {
   stopListening() {
     this.isListening = false;
     this.recognition.stop();
+    if (!this.message) return;
     this.loadingContent = true
     this.poseService.getPoseData(this.message).subscribe({
       next: (data) =>{
@@ -77,8 +74,7 @@ export class ChatComponent implements OnInit {
         console.log(this.poseViewer)
       },
       error: (err) =>{
-        console.error(err)
-        alert('Erro ao ler a mensagem, não há como transcrever a sentença')
+        console.log(err)
       },
       complete: () =>{
         this.transcript = ''
@@ -91,9 +87,9 @@ export class ChatComponent implements OnInit {
     await customElements.whenDefined('pose-viewer').then(() => {
       const poseViewer = document.querySelector('pose-viewer#example');
       if (poseViewer) {
-        console.log(poseViewer);
         poseViewer.setAttribute('src', `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=Olá, tudo bem?`);
         this.poseViewer = poseViewer;
+        console.log(this.poseViewer);
       }
     });
   }
