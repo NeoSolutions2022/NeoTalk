@@ -1,6 +1,5 @@
 .chat-container{
   height: 100vh;
-  display: flex;
   flex-direction: column;
   background-color: #deedf4;
 
@@ -34,13 +33,28 @@
         height: 100%;
         padding: 0;
         margin: 0 !important;
-        width: 45%;
-        background: #c5e7ff;
+        width: 100%;
+        background: #0069FF;
         display: flex;
         justify-content: center;
 
+        .input-traducao {
+          position: absolute;
+          bottom: 20px;
+          input {
+            width: 604px;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: transparent;
+            opacity: 0.8;
+          }
+          ::-webkit-input-placeholder {
+            color: white;
+          }
+        }
+
         pose-viewer{
-          width: 90%;
+          width: 40%;
         }
 
         mat-spinner{
