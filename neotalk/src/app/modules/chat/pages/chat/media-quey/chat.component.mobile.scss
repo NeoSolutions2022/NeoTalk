@@ -1,0 +1,36 @@
+@media only screen and (max-width: 767px) {
+  .chat__content {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .chat__content__video {
+    width: 90% !important;
+  }
+
+  .chats-recomendacoes {
+    width: 90%;
+    gap: 10px;
+    margin-left: 0 !important;
+    .recomendacoes {
+      span {
+        color: white;
+        font-size: 14px !important;
+        font-weight: bold;
+        word-wrap: break-word;
+        white-space: normal;
+      }
+    }
+  }
+
+  .input-traducao {
+    width: 100%;
+    input {
+      width: 70% !important;
+    }
+    .mic-button {
+      width: 12%; // Ajusta a largura do botão
+    }
+  }
+}
