@@ -22,7 +22,6 @@
     position: relative;
     display: flex;
     gap: 40px;
-
     flex-direction: row;
     height: 450px;
     width: 90%;
@@ -93,6 +92,7 @@
       margin-left: auto;
 
       .recomendacao-container {
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: stretch;

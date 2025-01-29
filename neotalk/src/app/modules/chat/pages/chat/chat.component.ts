@@ -1,10 +1,10 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {PoseService} from "../../../../services/pose.service";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { PoseService } from '../../../../services/pose.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: 'chat.component.html',
-  styleUrl: 'chat.component.scss'
+  styleUrl: 'chat.component.scss',
 })
 export class ChatComponent implements OnInit {
   poseData: any;
@@ -15,11 +15,10 @@ export class ChatComponent implements OnInit {
   loadingContent: boolean = false;
   isListening: boolean = false;
 
-  constructor(
-    private ngZone: NgZone,
-    private poseService: PoseService
-  ) {
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  constructor(private ngZone: NgZone, private poseService: PoseService) {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
       console.error('SpeechRecognition não é suportado neste navegador.');
@@ -35,8 +34,7 @@ export class ChatComponent implements OnInit {
       console.log('Reconhecimento de voz:', event);
       this.ngZone.run(() => {
         for (let i = event.resultIndex; i < event.results.length; i++) {
-          setTimeout(() => {
-          }, 1000);
+          setTimeout(() => {}, 1000);
 
           this.message = event.results[i][0].transcript;
         }
@@ -44,7 +42,7 @@ export class ChatComponent implements OnInit {
     };
 
     this.recognition.onerror = (event: any) => {
-      alert(event.error)
+      alert(event.error);
       console.error('Erro no reconhecimento de voz:', event.error);
     };
 
@@ -55,8 +53,8 @@ export class ChatComponent implements OnInit {
   }
 
   startListening() {
-    this.message = ''
-    this.transcript = ''
+    this.message = '';
+    this.transcript = '';
     this.isListening = true;
     this.recognition.start();
   }
@@ -65,40 +63,55 @@ export class ChatComponent implements OnInit {
     this.isListening = false;
     this.recognition.stop();
     if (!this.message) return;
-    this.loadingContent = true
+    this.loadingContent = true;
     this.poseService.getPoseData(this.message).subscribe({
-      next: (data) =>{
-        this.poseData = URL.createObjectURL(data)
-        console.log(URL.createObjectURL(data))
-        this.poseViewer.setAttribute('src', this.poseData)
-        console.log(this.poseViewer)
+      next: (data) => {
+        this.poseData = URL.createObjectURL(data);
+        console.log(URL.createObjectURL(data));
+        this.poseViewer.setAttribute('src', this.poseData);
+        console.log(this.poseViewer);
       },
-      error: (err) =>{
-        console.log(err)
+      error: (err) => {
+        console.log(err);
       },
-      complete: () =>{
-        this.transcript = ''
-        this.loadingContent = false
-      }
-    })
+      complete: () => {
+        this.transcript = '';
+        this.loadingContent = false;
+      },
+    });
   }
 
   async ngOnInit() {
     await customElements.whenDefined('pose-viewer').then(() => {
       const poseViewer = document.querySelector('pose-viewer#example');
       if (poseViewer) {
-        poseViewer.setAttribute('src', `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=Olá, tudo bem?`);
+        poseViewer.setAttribute(
+          'src',
+          `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=Olá, tudo bem?`
+        );
         this.poseViewer = poseViewer;
         console.log(this.poseViewer);
+      }
+
+      const poseViewer2 = document.querySelector('pose-viewer#example2');
+      if (poseViewer2) {
+        poseViewer2.setAttribute(
+          'src',
+          `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=Como você está?`
+        );
+        console.log(poseViewer2);
       }
     });
   }
 
   translateText() {
     if (!this.message) return;
-    this.poseViewer.setAttribute('src', `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=${this.message}`)
-    this.message = ''
-    this.transcript = ''
+    this.poseViewer.setAttribute(
+      'src',
+      `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=${this.message}`
+    );
+    this.message = '';
+    this.transcript = '';
     // this.httpClient.get(`https://sign.mt/api/v1/spoken-text-to-signed-pose?spoken=pt&signed=psr&text=${this.message}`,
     //   {
     //     headers: {
