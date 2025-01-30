@@ -1,4 +1,6 @@
 @import "../chat/media-quey/chat.component.mobile.scss";
+@import "../chat/media-quey/chat.component.laptop.scss";
+@import "../chat/media-quey/chat.component.tablet.scss";
 
 .chat-container {
   height: 100vh;
@@ -32,11 +34,15 @@
       height: 100%;
       padding: 0;
       margin: 0 !important;
-      width: 70%;
+      width: 100%;
       background: #0069ff;
       display: flex;
       justify-content: center;
       border-radius: 19.55px;
+
+      .pose-viewer-large {
+        width: 60%;
+      }
 
       .input-traducao {
         position: absolute;
@@ -119,12 +125,16 @@
 
         .card-recomendacoes {
           display: flex;
-          width: 40%;
+          width: 60%;
           align-items: center;
           padding: 50px;
           background-color: #0069ff;
           border-top-left-radius: 24px;
           border-bottom-left-radius: 24px;
+
+          .pose-viewer-small {
+            width: 100%;
+          }
         }
       }
     }

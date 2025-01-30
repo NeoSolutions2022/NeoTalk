@@ -1,0 +1,18 @@
+@media (min-width: 768px) and (max-width: 1023px) {
+  .chat__content__video {
+    width: 130% !important;
+
+    .pose-viewer-large {
+      width: 100% !important;
+    }
+
+    .input-traducao {
+      bottom: 50px !important;
+      width: 95% !important;
+    }
+  }
+
+  .card-recomendacoes {
+    width: 71% !important;
+  }
+}

@@ -83,19 +83,14 @@ export class ChatComponent implements OnInit {
 
   async ngOnInit() {
     await customElements.whenDefined('pose-viewer').then(() => {
-      this.setupPoseViewer('example', 'Olá, tudo bem?', '50%', '55%');
-      this.setupPoseViewer('example2', 'Olá, tudo bem?', '100%', '');
-      this.setupPoseViewer('example3', 'Olá, tudo bem?', '100%', '');
-      this.setupPoseViewer('example4', 'Olá, tudo bem?', '100%', '');
+      this.setupPoseViewer('example', 'Olá, tudo bem?');
+      this.setupPoseViewer('example2', 'Olá, tudo bem?');
+      this.setupPoseViewer('example3', 'Olá, tudo bem?');
+      this.setupPoseViewer('example4', 'Olá, tudo bem?');
     });
   }
 
-  private setupPoseViewer(
-    elementId: string,
-    text: string,
-    width: string,
-    height: string
-  ) {
+  private setupPoseViewer(elementId: string, text: string) {
     const poseViewer = document.querySelector(
       `pose-viewer#${elementId}`
     ) as HTMLElement;
@@ -104,8 +99,6 @@ export class ChatComponent implements OnInit {
         'src',
         `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=${text}`
       );
-      poseViewer.style.width = width;
-      poseViewer.style.height = height;
       console.log(poseViewer);
     }
   }
