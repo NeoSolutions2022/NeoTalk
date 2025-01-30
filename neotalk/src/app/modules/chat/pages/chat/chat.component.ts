@@ -83,25 +83,31 @@ export class ChatComponent implements OnInit {
 
   async ngOnInit() {
     await customElements.whenDefined('pose-viewer').then(() => {
-      const poseViewer = document.querySelector('pose-viewer#example');
-      if (poseViewer) {
-        poseViewer.setAttribute(
-          'src',
-          `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=Olá, tudo bem?`
-        );
-        this.poseViewer = poseViewer;
-        console.log(this.poseViewer);
-      }
-
-      const poseViewer2 = document.querySelector('pose-viewer#example2');
-      if (poseViewer2) {
-        poseViewer2.setAttribute(
-          'src',
-          `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=Como você está?`
-        );
-        console.log(poseViewer2);
-      }
+      this.setupPoseViewer('example', 'Olá, tudo bem?', '50%', '55%');
+      this.setupPoseViewer('example2', 'Olá, tudo bem?', '100%', '');
+      this.setupPoseViewer('example3', 'Olá, tudo bem?', '100%', '');
+      this.setupPoseViewer('example4', 'Olá, tudo bem?', '100%', '');
     });
+  }
+
+  private setupPoseViewer(
+    elementId: string,
+    text: string,
+    width: string,
+    height: string
+  ) {
+    const poseViewer = document.querySelector(
+      `pose-viewer#${elementId}`
+    ) as HTMLElement;
+    if (poseViewer) {
+      poseViewer.setAttribute(
+        'src',
+        `https://us-central1-sign-mt.cloudfunctions.net/spoken_text_to_signed_pose?spoken=pt&signed=psr&text=${text}`
+      );
+      poseViewer.style.width = width;
+      poseViewer.style.height = height;
+      console.log(poseViewer);
+    }
   }
 
   translateText() {
