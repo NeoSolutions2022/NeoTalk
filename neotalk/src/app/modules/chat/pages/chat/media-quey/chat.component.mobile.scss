@@ -1,5 +1,6 @@
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 376px) and (max-width: 767px) {
   .chat__content {
+    height: 85% !important;
     display: flex;
     flex-direction: column !important;
     align-items: center;
@@ -8,6 +9,9 @@
 
   .chat__content__video {
     width: 90% !important;
+    .pose-viewer-large {
+      width: 95% !important;
+    }
   }
 
   .chats-recomendacoes {
@@ -15,7 +19,7 @@
     gap: 10px;
     margin-left: 0 !important;
     .recomendacao-container {
-      height: 100px !important;
+      // height: 100px !important;
       .recomendacoes {
         padding: 30px !important;
         span {
@@ -38,7 +42,57 @@
       width: 70% !important;
     }
     .mic-button {
-      width: 12%; // Ajusta a largura do botão
+      width: 12%;
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .chat__content {
+    height: 50% !important;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 20px !important;
+  }
+
+  .chat__content__video {
+    height: 70% !important;
+    width: 90% !important;
+    .pose-viewer-large {
+      width: 68% !important;
+    }
+  }
+
+  .chats-recomendacoes {
+    width: 90%;
+    gap: 10px;
+    margin-left: 0 !important;
+    .recomendacao-container {
+      height: 110px !important;
+      .recomendacoes {
+        padding: 30px !important;
+        span {
+          color: white;
+          font-size: 14px !important;
+          font-weight: bold;
+          word-wrap: break-word;
+          white-space: normal;
+        }
+      }
+      .card-recomendacoes {
+        width: 75% !important;
+      }
+    }
+  }
+
+  .input-traducao {
+    width: 100%;
+    input {
+      width: 70% !important;
+    }
+    .mic-button {
+      width: 12%;
     }
   }
 }
