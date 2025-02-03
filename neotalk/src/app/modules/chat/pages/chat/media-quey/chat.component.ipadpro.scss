@@ -1,0 +1,24 @@
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .chat__content {
+    flex-direction: column !important;
+    height: 70% !important;
+
+    .chat__content__video {
+      .pose-viewer-large {
+        width: 60% !important;
+      }
+    }
+
+    .chats-recomendacoes {
+      gap: 35px;
+
+      .recomendacao-container {
+        height: 200px !important;
+
+        .card-recomendacoes {
+          width: 40% !important;
+        }
+      }
+    }
+  }
+}

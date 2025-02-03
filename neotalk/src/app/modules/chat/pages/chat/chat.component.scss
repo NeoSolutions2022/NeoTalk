@@ -1,6 +1,7 @@
 @import "../chat/media-quey/chat.component.mobile.scss";
 @import "../chat/media-quey/chat.component.laptop.scss";
 @import "../chat/media-quey/chat.component.tablet.scss";
+@import "../chat/media-quey/chat.component.ipadpro.scss";
 
 .chat-container {
   height: 100vh;
@@ -183,9 +184,6 @@
         padding: 4px 0 4px 0;
         mat-icon {
           color: white !important;
-        }
-        &:hover {
-          --mat-mdc-button-persistent-ripple-color: none;
         }
       }
     }
